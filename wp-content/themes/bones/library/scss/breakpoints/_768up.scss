@@ -27,261 +27,287 @@ LAYOUT & GRID STYLES
 	width: 760px;
 }
 
-/*********************
-HEADER STYLES
-*********************/
 
-.header {}
 
-	#logo {}
-
-/*********************
-NAVIGATION STYLES
-*********************/
-
-.nav {
-	border: 0;
-	ul {
-		background:$black;
-		margin-top:0;
+// HEADER
+#header {
+	width: 100%;
+	padding: 0;
+	#inner-header {
+		width: 100%;
+		align-items: center;
+		height: 5.5em;
+		overflow: hidden;
 	}
-	li {
-		float: left;
-		position: relative;
-
+	#logo {
+		display: inline-block;
+		height: 2.75em;
+		width: 14.85em;
+		margin: 1.375em 0;
+		padding: 0;
 		a {
-			border-bottom: 0;
-
-			/*
-			you can use hover styles here even though this size
-			has the possibility of being a mobile device.
-			*/
-			&:hover, &:focus {
-				color: $white;
-				text-decoration: underline;
-			}
+			width: 100%;
+			height: 100%;
 		}
 
-		&:first-child {}
-		&:last-child {}
-
-		/*
-		plan your menus and drop-downs wisely.
-		*/
-		ul.sub-menu,
-		ul.children {
-			margin-top: 0;
-			border: 1px solid #ccc;
-			border-top: 0;
-			position: absolute;
-			visibility: hidden;
-			z-index: 8999;
-
-			li {
-
-				a {
-					padding-left: 10px;
-					border-right: 0;
-					display: block;
-					width: 180px;
-					border-bottom: 1px solid #ccc;
-
-					&:hover,
-					&:focus {}
-
-					&:link {}
-				}
-
-				&:first-child {}
-
-				&:last-child {
-
-					a {
-						border-bottom: 0;
-					}
-				}
-
-				/*
-				if you need to go deeper, go nuts
-				just remember deeper menus suck
-				for usability. k, bai.
-				*/
-				ul {
-					top:0;
-					left:100%;
-				}
-			}
-
-			/* highlight sub-menu current page */
-			li.current-menu-item,
-			li.current_page_item,
-			li.current_page_ancestor {
-				a {}
-			}
+	}
+	nav {
+		display: inline-block;
+		float: right;
+		margin-right: 2em;
+		margin-left: auto;
+		line-height: 2.5em;
+		margin-top: 2.25em;
+		margin-bottom: 0.75em;
+		border: 0;
+		ul {
+			margin-top:0;
 		}
-
-		/* showing sub-menus */
-		&:hover > ul {
-			top: auto;
-			visibility:visible;
+		li {
+			float: left;
+			position: relative;
 		}
-
-	} /* end .menu ul li */
-
-	/* highlight current page */
-	li.current-menu-item,
-	li.current_page_item,
-	li.current_page_ancestor {
-		a {}
-	}  /* end current highlighters */
-
-} /* end .nav */
-
-/*********************
-SIDEBARS & ASIDES
-*********************/
-
-.sidebar {
-	//margin-top: 2.2em;
+		li a {
+			padding: 0 0.75em;
+		}
+	}
 }
 
-	.widgettitle {
-		border-bottom: 2px solid #444;
-		margin-bottom: 0.75em;
+// NAVIGATION STYLES
+.nav {
+}
+
+.home, .page-id-49, .error404 {
+	
+	#left {
+		width: 100%;
+		#inner-header {
+			width: 100%;
+		}
+
 	}
+	#right {
+		width: 100%;
+		clear: both;
+		.right-box div {
+			h2 {
+				margin: 1.5em 2em;
+			}
+		}
+	}
+}
+.home {	
+	#content {
 
-	.widget {
-		padding: 0 10px;
-		margin: 2.2em 0;
+		#left-content {
+			width: 50%;
+			float: left;
+			//margin-bottom: 2em;
+			#main-reflections {
+				 display: block;
+			 }
 
-		ul {
-			li {
-				margin-bottom: 0.75em;
-
-				&:first-child {}
-				&:last-child {}
-				a {}
-				/* deep nesting */
-
-				ul {
-					margin-top: 0.75em;
-					padding-left: 1em;
+			article {
+				width: 100%;
+				margin: 0;
+				padding-right: 2em;
+				margin-bottom: 1em;
+				display: inline-block;
+				vertical-align: top;
+				&.tweet {
+					padding-right: 2em;
+					margin-bottom: 2em;
+					div {
+						background-color: #d8eeec;
+						text-align: center;
+						font-size: 1.1em;
+						padding: 2em 1em 3em 1em;
+						font-family: $sans-serif;
+						a {
+							color: #17A170;
+							text-decoration: none;
+						}
+						p  {
+							margin: 0;
+						}
+					}
+					.twitter-icon {
+						width: 2.5em;
+						height: 2.5em;
+						background-image: url('../images/tw-s-g.png');
+						background-size: cover;
+						display: block;
+						margin: 0 auto;
+						margin-bottom: 1em;
+					}
+				}
+			}
+			.reflection h2 a {
+				border-bottom: 2px solid rgb(137,218,197);
+				&:hover {
+					color: #676a6a;
+					border-color: #d7d7d7;
 				}
 			}
 		}
-	}
-
-
-	/* links widget */
-	.widget_links {}
-	.widget_links ul {}
-	.widget_links ul li {}
-	.widget_links ul li a {}
-
-	/* meta widget */
-	.widget_meta {}
-	.widget_meta ul {}
-	.widget_meta ul li {}
-	.widget_meta ul li a {}
-
-	/* pages widget */
-	.widget_pages {}
-	.widget_pages ul {}
-	.widget_pages ul li {}
-	.widget_pages ul li a {}
-
-	/* recent-posts widget */
-	.widget_recent_entries {}
-	.widget_recent_entries ul {}
-	.widget_recent_entries ul li {}
-	.widget_recent_entries ul li a {}
-
-	/* archives widget */
-	.widget_archive {}
-	.widget_archive ul {}
-	.widget_archive ul li {}
-	.widget_archive ul li a {}
-	.widget_archive select {}
-	.widget_archive option {}
-
-	/* tag-cloud widget */
-	.widget_links {}
-	.widget_links li:after {}
-	.widget_links li:before {}
-	.widget_tag_cloud {}
-	.widget_tag_cloud a {}
-	.widget_tag_cloud a:after {}
-	.widget_tag_cloud a:before {}
-
-	/* calendar widget */
-	.widget_calendar {}
-	#calendar_wrap {}
-	#calendar_wrap th {}
-	#calendar_wrap td {}
-	#wp-calendar tr td {}
-	#wp-calendar caption {}
-	#wp-calendar a {}
-	#wp-calendar #today {}
-	#wp-calendar #prev {}
-	#wp-calendar #next {}
-	#wp-calendar #next a {}
-	#wp-calendar #prev a {}
-
-	/* category widget */
-	.widget_categories {}
-	.widget_categories ul {}
-	.widget_categories ul li {}
-	.widget_categories ul ul.children {}
-	.widget_categories a {}
-	.widget_categories select{}
-	.widget_categories select#cat {}
-	.widget_categories select.postform {}
-	.widget_categories option {}
-	.widget_categories .level-0 {}
-	.widget_categories .level-1 {}
-	.widget_categories .level-2 {}
-	.widget_categories .level-3 {}
-
-	/* recent-comments widget */
-	.recentcomments {}
-	#recentcomments {}
-	#recentcomments li {}
-	#recentcomments li a {}
-	.widget_recent_comments {}
-
-	/* search widget */
-	#searchform {}
-	.widget_search {}
-	.screen-reader-text {}
-
-	/* text widget */
-	.textwidget {}
-	.widget_text {}
-	.textwidget p {}
-
-
-/*********************
-FOOTER STYLES
-*********************/
-
-/*
-you'll probably need to do quite a bit
-of overriding here if you styled them for
-mobile. Make sure to double check these!
-*/
-.footer-links {
-	ul {
-		li {
-			a {
-				&:hover {}
+		
+		#right-content {
+			width: 50%;
+			float: right;
+			margin-bottom: 2em;
+			article .blog-image {
+				max-height: 20em;
+				overflow: hidden;
 			}
-			/*
-			be careful with the depth of your menus.
-			it's very rare to have multi-depth menus in
-			the footer.
-			*/
-			ul {}
 		}
 	}
-} /* end .footer-links */
+	.right {
+	}
+}
+.page-id-49, .error404 {
+	#content {
+	}
+	.hentry {
+	}
+	#left-content {
+		width: 75%;
+		.article-header {
+			.page-title {
+				a {
+				}
+				
+			}
+			.page-subtitle {
+			}
+		}
+	}
+	#author-grid {
+		clear: both;
+		margin-top: 2em;
+		.gutter {
+			width: 2%;
+			display: inline-block;
+			&:nth-of-type(4n){
+				display: inline-block;
+			}
+			&:nth-of-type(3n+3){
+				display: none;
+			}
+		}
+		.author-box {
+			width: 32%;
+			display: inline-block;
+			.author-image {
+			}
+			h3 {
+			}
+		}
+	}
+}
 
+.author, .archive, .single, .page-id-26 /*about-page*/ {
+	#content {
+		//white-space: nowrap;
+		overflow: hidden;
+		 .content {
+			display: inline-block;
+			vertical-align: top;
+			white-space: normal;
+			overflow: hidden;
+		 }
+	}
+	#left-content {
+		width: 26%;
+		margin-right: 8%;
+		#to-overview {
+			a {
+			}	
+		}
+		img {
+		}
+		hr {
+		}
+		#author-share {
+			h3 {
+			}
+		}
+	}
+	#right-content {
+		width: 66%;
+		article {
+			width: 85%;
+		}
+
+	}
+}
+
+.post-type-archive {
+	#content {
+		article {
+			width: 48%;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.archive-spacer {
+			width: 4%;
+			display: inline-block;
+			&:nth-of-type(2n+2){
+				display: none;
+			}
+
+		}
+	}
+}
+
+
+
+.footer {
+	#instagram {
+		position: relative;
+		#instabox {
+			width: (100% / 3);
+			padding-bottom: (100% / 3);
+			float: left;
+		}
+		#greenbox {
+			transform: rotate(-90deg);
+			margin-top: auto;
+			margin-bottom: auto;
+			top: 0;
+			bottom: 0;
+			background-repeat: no-repeat;
+			margin-left: (100% / 3);
+			width: 28px;
+			height: 30px;
+		}
+		#instaphotos {
+			float: left;
+			width: (200% / 3);
+			display: inline-block;
+			white-space: nowrap;
+			#sb_instagram.sbi_col_4.sbi_disable_mobile #sbi_images .sbi_item {
+				width: 50%;
+				//height: 14em;
+			}
+		}
+	}
+	#inner-footer {
+		#p-email {
+			display: inline-block;
+		}
+		.float-right {
+			float: right;
+			margin-left: 2.5em;
+		}
+		.fb {
+			width: 1.5em;
+			height: 2.5em;
+		}
+		.in {
+			background-image: url('../images/in.png');
+			background-position-x: 5px;
+		}
+
+	}
+
+}

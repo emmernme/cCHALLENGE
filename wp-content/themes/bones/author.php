@@ -19,22 +19,15 @@
 			<div id="content">
 
 				<div id="left-content" class="content">
-					<div id="to-overview"><a href="#">Back to overview</a></div>
+					<div id="to-overview"><a href="<?php echo get_page_link(49); ?>">Back to overview</a></div>
 					<?php echo get_avatar($author->ID, 512); ?>
 					<h2 id="author-name"><?php echo $author->display_name; ?></h2>
-					<p id="author-challenge">My cCHANGE challenge:<br/><?php the_author_meta('cCHALLENGE', $author->ID); ?></p>
+					<p id="author-challenge">My cCHALLENGE:<br/><?php the_author_meta('cCHALLENGE', $author->ID); ?></p>
 					<hr />
 					<p id="author-bio"><?php the_author_meta('description', $author->ID); ?></p>
 					<hr />
-					<div id="author-share">
-						<h3>SHARE THIS</h3>
-						<a class="share" href="<?php the_author_meta('facebook', $author->ID); ?>" id="facebook"></a>
-						<a class="share" href="http://twitter.com/<?php the_author_meta('twitter', $author->ID); ?>" id="twitter"></a>
-						<a class="share" href="<?php the_author_meta('linkedin', $author->ID); ?>" id="linkedin"></a>
-					</div>
-				</div>
-				
-				<div id="right-content" class="content">
+					<?php share_box($author->ID); ?>
+				</div><div id="right-content" class="content">
 					<main id="main" class="cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 
@@ -43,7 +36,8 @@
 							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
 
 								<header class="article-header">
-									<h3 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+									<?php $day = get_post_meta(get_the_ID(), '_blog_dayday', true); ?>
+									<h3 class="h2"><?php echo ($day)? "Day {$day}: ":''; ?><?php the_title(); ?></a></h3>
 								</header>
 
 								<section class="entry-content cf">
@@ -59,19 +53,16 @@
 							</article>
 
 							<?php endwhile; ?>
-
+									<?php bones_page_navi(); ?>
 							<?php else : ?>
 
 									<article id="post-not-found" class="hentry cf">
 										<header class="article-header">
-											<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+											<h1><?php echo $author->display_name; ?> hasn't blogged yet!</h1>
 										</header>
 										<section class="entry-content">
-											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+											<h3><?php echo $author->display_name; ?> hasn't started blogging yet. Please come back later.</h3>
 										</section>
-										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the custom posty type archive template.', 'bonestheme' ); ?></p>
-										</footer>
 									</article>
 
 							<?php endif; ?>

@@ -255,20 +255,6 @@ probably best not to use it. I mean, were you going to anyway? */
 Site Name:
 Author:
 
-Stylesheet: IE Grid Styles
-
-Since the example grid is based on media queries, so rather than
-setup some js library that would make IE8 and below understand
-media queries, let's just add some styles that serves a fixed grid.
-
-Again, if you want to roll your own, just remove this junk and put
-whatever you use in here.
-
-******************************************************************/
-/******************************************************************
-Site Name:
-Author:
-
 Stylesheet: 481px and Up Stylesheet
 
 This stylesheet is loaded for larger devices. It's set to
@@ -359,115 +345,170 @@ LAYOUT & GRID STYLES
 .wrap {
   width: 760px; }
 
-/*********************
-HEADER STYLES
-*********************/
-/*********************
-NAVIGATION STYLES
-*********************/
-.nav {
-  border: 0;
-  /* end .menu ul li */
-  /* highlight current page */
-  /* end current highlighters */ }
-  .nav ul {
-    background: #323944;
-    margin-top: 0; }
-  .nav li {
-    float: left;
-    position: relative;
-    /*
-    plan your menus and drop-downs wisely.
-    */
-    /* showing sub-menus */ }
-    .nav li a {
-      border-bottom: 0;
-      /*
-      you can use hover styles here even though this size
-      has the possibility of being a mobile device.
-      */ }
-      .nav li a:hover, .nav li a:focus {
-        color: white;
-        text-decoration: underline; }
-    .nav li ul.sub-menu,
-    .nav li ul.children {
-      margin-top: 0;
-      border: 1px solid #ccc;
-      border-top: 0;
-      position: absolute;
-      visibility: hidden;
-      z-index: 8999;
-      /* highlight sub-menu current page */ }
-      .nav li ul.sub-menu li,
-      .nav li ul.children li {
-        /*
-        if you need to go deeper, go nuts
-        just remember deeper menus suck
-        for usability. k, bai.
-        */ }
-        .nav li ul.sub-menu li a,
-        .nav li ul.children li a {
-          padding-left: 10px;
-          border-right: 0;
-          display: block;
-          width: 180px;
-          border-bottom: 1px solid #ccc; }
-        .nav li ul.sub-menu li:last-child a,
-        .nav li ul.children li:last-child a {
-          border-bottom: 0; }
-        .nav li ul.sub-menu li ul,
-        .nav li ul.children li ul {
-          top: 0;
-          left: 100%; }
-    .nav li:hover > ul {
-      top: auto;
-      visibility: visible; }
-
-/* end .nav */
-/*********************
-SIDEBARS & ASIDES
-*********************/
-.widgettitle {
-  border-bottom: 2px solid #444;
-  margin-bottom: 0.75em; }
-
-.widget {
-  padding: 0 10px;
-  margin: 2.2em 0; }
-  .widget ul li {
+#header {
+  width: 100%;
+  padding: 0; }
+  #header #inner-header {
+    width: 100%;
+    align-items: center;
+    height: 5.5em;
+    overflow: hidden; }
+  #header #logo {
+    display: inline-block;
+    height: 2.75em;
+    width: 14.85em;
+    margin: 1.375em 0;
+    padding: 0; }
+    #header #logo a {
+      width: 100%;
+      height: 100%; }
+  #header nav {
+    display: inline-block;
+    float: right;
+    margin-right: 2em;
+    margin-left: auto;
+    line-height: 2.5em;
+    margin-top: 2.25em;
     margin-bottom: 0.75em;
-    /* deep nesting */ }
-    .widget ul li ul {
-      margin-top: 0.75em;
-      padding-left: 1em; }
+    border: 0; }
+    #header nav ul {
+      margin-top: 0; }
+    #header nav li {
+      float: left;
+      position: relative; }
+    #header nav li a {
+      padding: 0 0.75em; }
 
-/* links widget */
-/* meta widget */
-/* pages widget */
-/* recent-posts widget */
-/* archives widget */
-/* tag-cloud widget */
-/* calendar widget */
-/* category widget */
-/* recent-comments widget */
-/* search widget */
-/* text widget */
-/*********************
-FOOTER STYLES
-*********************/
-/*
-you'll probably need to do quite a bit
-of overriding here if you styled them for
-mobile. Make sure to double check these!
-*/
-.footer-links ul li {
-  /*
-  be careful with the depth of your menus.
-  it's very rare to have multi-depth menus in
-  the footer.
-  */ }
+.home #left, .page-id-49 #left, .error404 #left {
+  width: 100%; }
+  .home #left #inner-header, .page-id-49 #left #inner-header, .error404 #left #inner-header {
+    width: 100%; }
+.home #right, .page-id-49 #right, .error404 #right {
+  width: 100%;
+  clear: both; }
+  .home #right .right-box div h2, .page-id-49 #right .right-box div h2, .error404 #right .right-box div h2 {
+    margin: 1.5em 2em; }
 
-/* end .footer-links */
+.home #content #left-content {
+  width: 50%;
+  float: left; }
+  .home #content #left-content #main-reflections {
+    display: block; }
+  .home #content #left-content article {
+    width: 100%;
+    margin: 0;
+    padding-right: 2em;
+    margin-bottom: 1em;
+    display: inline-block;
+    vertical-align: top; }
+    .home #content #left-content article.tweet {
+      padding-right: 2em;
+      margin-bottom: 2em; }
+      .home #content #left-content article.tweet div {
+        background-color: #d8eeec;
+        text-align: center;
+        font-size: 1.1em;
+        padding: 2em 1em 3em 1em;
+        font-family: "maison_neue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+        .home #content #left-content article.tweet div a {
+          color: #17A170;
+          text-decoration: none; }
+        .home #content #left-content article.tweet div p {
+          margin: 0; }
+      .home #content #left-content article.tweet .twitter-icon {
+        width: 2.5em;
+        height: 2.5em;
+        background-image: url("../images/tw-s-g.png");
+        background-size: cover;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 1em; }
+  .home #content #left-content .reflection h2 a {
+    border-bottom: 2px solid #89dac5; }
+    .home #content #left-content .reflection h2 a:hover {
+      color: #676a6a;
+      border-color: #d7d7d7; }
+.home #content #right-content {
+  width: 50%;
+  float: right;
+  margin-bottom: 2em; }
+
+.page-id-49 #left-content, .error404 #left-content {
+  width: 75%; }
+.page-id-49 #author-grid, .error404 #author-grid {
+  clear: both;
+  margin-top: 2em; }
+  .page-id-49 #author-grid .gutter, .error404 #author-grid .gutter {
+    width: 2%;
+    display: inline-block; }
+    .page-id-49 #author-grid .gutter:nth-of-type(4n), .error404 #author-grid .gutter:nth-of-type(4n) {
+      display: inline-block; }
+    .page-id-49 #author-grid .gutter:nth-of-type(3n+3), .error404 #author-grid .gutter:nth-of-type(3n+3) {
+      display: none; }
+  .page-id-49 #author-grid .author-box, .error404 #author-grid .author-box {
+    width: 32%;
+    display: inline-block; }
+
+.author #content, .archive #content, .single #content, .page-id-26 #content {
+  overflow: hidden; }
+  .author #content .content, .archive #content .content, .single #content .content, .page-id-26 #content .content {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+    overflow: hidden; }
+.author #left-content, .archive #left-content, .single #left-content, .page-id-26 #left-content {
+  width: 26%;
+  margin-right: 8%; }
+.author #right-content, .archive #right-content, .single #right-content, .page-id-26 #right-content {
+  width: 66%; }
+  .author #right-content article, .archive #right-content article, .single #right-content article, .page-id-26 #right-content article {
+    width: 85%; }
+
+.post-type-archive #content article {
+  width: 48%;
+  display: inline-block;
+  vertical-align: top; }
+.post-type-archive #content .archive-spacer {
+  width: 4%;
+  display: inline-block; }
+  .post-type-archive #content .archive-spacer:nth-of-type(2n+2) {
+    display: none; }
+
+.footer #instagram {
+  position: relative; }
+  .footer #instagram #instabox {
+    width: 33.33333%;
+    padding-bottom: 33.33333%;
+    float: left; }
+  .footer #instagram #greenbox {
+    transform: rotate(-90deg);
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    margin-left: 33.33333%;
+    width: 28px;
+    height: 30px; }
+  .footer #instagram #instaphotos {
+    float: left;
+    width: 66.66667%;
+    display: inline-block;
+    white-space: nowrap; }
+    .footer #instagram #instaphotos #sb_instagram.sbi_col_4.sbi_disable_mobile #sbi_images .sbi_item {
+      width: 50%; }
+.footer #inner-footer #p-email {
+  display: inline-block; }
+.footer #inner-footer .float-right {
+  float: right;
+  margin-left: 2.5em; }
+.footer #inner-footer .fb {
+  width: 1.5em;
+  height: 2.5em; }
+.footer #inner-footer .in {
+  background-image: url("../images/in.png");
+  background-position-x: 5px; }
+
 /******************************************************************
 Site Name:
 Author:
@@ -479,103 +520,66 @@ be seen on the Desktop.
 
 ******************************************************************/
 .wrap {
-  width: 1040px; }
+  width: 1020px; }
 
-header {
-  width: 100%; }
-  header #inner-header {
-    display: flex;
-    align-items: center; }
-  header #logo {
-    display: inline-block; }
-  header nav {
-    display: inline-block;
-    float: right;
-    margin-right: 2em;
-    margin-left: auto; }
+#header #inner-header {
+  width: 75%; }
 
-.home #left, .page-id-49 #left {
+.home #left, .page-id-49 #left, .error404 #left {
   width: 75%;
   left: 0;
   float: left; }
-.home #right, .page-id-49 #right {
+  .home #left #inner-header, .page-id-49 #left #inner-header, .error404 #left #inner-header {
+    width: 100%; }
+.home #right, .page-id-49 #right, .error404 #right {
   width: 25%;
   right: 0;
-  float: right; }
+  float: right;
+  clear: none; }
+  .home #right .right-box, .page-id-49 #right .right-box, .error404 #right .right-box {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    vertical-align: top; }
 
 .home #content #left-content {
-  width: 60%;
-  float: left; }
+  width: 60%; }
   .home #content #left-content article {
-    width: 50%;
-    margin: 0;
-    padding-right: 2em;
-    margin-bottom: 3em; }
+    width: 50%; }
 .home #content #right-content {
-  width: 40%;
-  float: right; }
+  width: 40%; }
 
-.page-id-49 #left-content {
-  width: 75%; }
-.page-id-49 #author-grid {
-  clear: both;
-  margin-top: 2em; }
-  .page-id-49 #author-grid #gutter {
-    width: 1%; }
-  .page-id-49 #author-grid .author-box {
-    width: 19.2%; }
+.page-id-49 #author-grid .gutter {
+  width: 1%;
+  display: inline-block; }
+  .page-id-49 #author-grid .gutter:nth-of-type(3n+3) {
+    display: inline-block; }
+  .page-id-49 #author-grid .gutter:nth-of-type(5n+5) {
+    display: none; }
+.page-id-49 #author-grid .author-box {
+  width: 19.2%; }
 
-.author #content, .archive #content, .single #content {
-  white-space: nowrap;
-  overflow: hidden; }
-  .author #content .content, .archive #content .content, .single #content .content {
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal;
-    overflow: hidden; }
-.author #left-content, .archive #left-content, .single #left-content {
-  width: 26%;
-  margin-right: 8%; }
-.author #right-content, .archive #right-content, .single #right-content {
-  width: 66%; }
+.post-type-archive #content article {
+  width: 28%; }
+.post-type-archive #content .archive-spacer {
+  width: 8%; }
+  .post-type-archive #content .archive-spacer:nth-of-type(2n+2) {
+    display: inline-block; }
+  .post-type-archive #content .archive-spacer:nth-of-type(3n+3) {
+    display: none; }
 
 .footer #instagram #instabox {
-  width: 14em;
-  padding-bottom: 14em;
-  background-color: #00bc8c;
-  display: inline-block;
-  color: white;
-  text-align: center;
-  vertical-align: top;
-  position: relative;
-  float: left; }
-.footer #instagram #container {
-  float: left;
-  height: 100%;
-  position: relative;
-  min-width: 25%;
-  padding-bottom: 25%;
-  z-index: 99; }
-  .footer #instagram #container #greenbox {
-    background-color: #00bc8c;
-    -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
-    clip-path: polygon(100% 50%, 0 0, 0 100%);
-    height: 1.25em;
-    width: 0.75em;
-    margin: auto;
-    position: absolute;
-    left: auto;
-    right: auto;
-    top: 0;
-    bottom: 0; }
+  width: 20%;
+  padding-bottom: 20%; }
+.footer #instagram #greenbox {
+  margin-left: 20%; }
 .footer #instagram #instaphotos {
   float: left;
-  width: 0;
+  width: 80%;
   display: inline-block;
   white-space: nowrap; }
   .footer #instagram #instaphotos #sb_instagram.sbi_col_4.sbi_disable_mobile #sbi_images .sbi_item {
-    width: 14em;
-    height: 14em; }
+    width: 25%; }
 .footer #inner-footer #p-email {
   display: inline-block; }
 .footer #inner-footer .float-right {

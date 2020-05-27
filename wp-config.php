@@ -37,9 +37,6 @@ define('DB_CHARSET', 'utf8mb4');
 /** Databasens "Collate"-type. La denne være hvis du er i tvil. */
 define('DB_COLLATE', '');
 
-define('WP_HOME','http://localhost/cCHALLENGE/');
-define('WP_SITEURL','http://localhost/cCHALLENGE/');
-
 /**#@+
  * Autentiseringsnøkler og salter.
  *
@@ -80,7 +77,8 @@ $table_prefix  = 'wp_';
  * 
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
+ // Enable WP_DEBUG mode
+define( 'WP_DEBUG', true );
 
 /* That's all, stop editing! Happy blogging. */
 

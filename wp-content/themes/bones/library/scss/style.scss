@@ -33,13 +33,13 @@ the whole project.
 @import "partials/typography";
 
 // Sass functions
-@import "partials/functions";
+//@import "partials/functions";
 
 // import mixins
 @import "partials/mixins";
 
 // the grid
-@import "partials/grid";
+//@import "partials/grid";
 
 /*********************
 IMPORTING MODULES
@@ -50,10 +50,10 @@ you hate oysters, then the world is your peanut butter & jelly sandwich.
 *********************/
 
 // alert boxes
-@import "modules/alerts";
+//@import "modules/alerts";
 
 // buttons
-@import "modules/buttons";
+//@import "modules/buttons";
 
 // forms (inputs & labels)
 @import "modules/forms";

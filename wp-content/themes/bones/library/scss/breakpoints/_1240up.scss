@@ -9,3 +9,11 @@ on larger screens.
 
 ******************************************************************/
 
+.wrap {
+  width: 1200px;
+}
+
+.home #content #right-content article .blog-image {
+	max-height: 20em;
+	overflow: hidden;
+}

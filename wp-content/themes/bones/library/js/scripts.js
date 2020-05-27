@@ -1,17 +1,4 @@
 /*
- * Bones Scripts File
- * Author: Eddie Machado
- *
- * This file should contain any js scripts you want to add to the site.
- * Instead of calling it in the header or throwing it inside wp_head()
- * this file will be called automatically in the footer so as not to
- * slow the page load.
- *
- * There are a lot of example functions and tools in here. If you don't
- * need any of it, just remove it. They are meant to be helpers and are
- * not required. It's your world baby, you can do whatever you want.
- */
-/*
  * Get Viewport Dimensions
  * returns object with viewport dimensions to match css in width and height properties
  * ( source: http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript )
@@ -58,91 +45,101 @@ var timeToWaitForLast = 100;
 
 if (typeof is_home === "undefined") var is_home = $('body').hasClass('home');
 if (typeof is_page_49 === "undefined") var is_page_49 = $('body').hasClass('page-id-49');
+if (typeof is_inspiration === "undefined") var is_inspiration = $('body').hasClass('post-type-archive-reflection');
 
-$(window).resize(function() {
-	// if we're on the home page, we wait the set amount (in function above) then fire the function
-	if (is_home) {
-		waitForFinalEvent(function() {
-			// update the viewport, in case the window size has changed
-			viewport = updateViewportDimensions();
-			// if we're above or equal to 768 fire this off
-
-			if (viewport.width >= 768) {
-				console.log('On home page and window sized to 768 width or more.');
-				
-				// Refresh masonry
-
-			} else { // otherwise, let's do this instead
-				console.log('Not on home page, or window sized to less than 768.');
-			}
-
-		}, timeToWaitForLast, "onResize");
-	}
-});
-
-/*
- * We're going to swap out the gravatars.
- * In the functions.php file, you can see we're not loading the gravatar
- * images on mobile to save bandwidth. Once we hit an acceptable viewport
- * then we can swap out those images since they are located in a data attribute.
- */
-function loadGravatars() {
-	// set the viewport using the function above
+var moved = false;
+function moveSubscription() {
 	viewport = updateViewportDimensions();
-	// if the viewport is tablet or larger, we load in the gravatars
-	if (viewport.width >= 768) {
-		jQuery('.comment img[data-gravatar]').each(function() {
-			jQuery(this).attr('src', jQuery(this).attr('data-gravatar'));
-		});
+	// if we're less than 768, and the box is visible, move it
+	if (viewport.width < 1030 && (is_home || is_page_49) && !moved) {
+		$('#right').insertAfter('#author-grid');
+		moved = true;
+	} else if (moved && viewport.width >= 1030){
+		$('#right').insertBefore('#author-clear');
+		moved = false;
 	}
-} // end function
-
-
+}
+moveSubscription();
 /*
  * Put all your regular jQuery in here.
  */
 jQuery(document).ready(function($) {
-
-	/*
-	 * Let's fire off the gravatar function
-	 * You can remove this if you don't need it
-	 */
-	loadGravatars();
-	
-	// Load masonry if front page
+	moveSubscription();
+	// If front page, init masonry
 	if (is_home) {
-		waitForFinalEvent(function() {
-			// update the viewport, in case the window size has changed
-			viewport = updateViewportDimensions();
-			// if we're above or equal to 768 fire this off
+		viewport = updateViewportDimensions();
+		// if we're above or equal to 768 fire this off
+		if (viewport.width >= 768) {
+			// On home page and window sized to 768 width or more.
+			$container = $('#main-reflections');
+			$container.masonry({    
+				itemSelector: 'article',
+				percentPosition: true
+			}).imagesLoaded(function(){
+				$container.masonry('reloadItems');   
+				$container.masonry('layout');
+			});
+			$(window).resize(function () {
+				//$('#main-reflections').masonry('reloadItems');
+			});
 
-			if (viewport.width >= 768) {
-				// On home page and window sized to 768 width or more.
-				var msnry = new Masonry( '#main-reflections', {
-					itemSelector: 'article',
-					percentPosition: true,
-					
-				});
-			} 
-		}, timeToWaitForLast, "init-masonry");
+		} 
 	}
+	// If participant-page, init masonry
 	if (is_page_49){
-		waitForFinalEvent(function() {
-			// update the viewport, in case the window size has changed
-			viewport = updateViewportDimensions();
-			// if we're above or equal to 768 fire this off
-
-			if (viewport.width >= 768) {
-				// On home page and window sized to 768 width or more.
-				var msnry = new Masonry( '#author-grid', {
-					itemSelector: '.author-box',
-					percentPosition: true,
-					gutter: 10,
-				});
-			} 
-		}, timeToWaitForLast, "init-masonry");
+		viewport = updateViewportDimensions();
+		// if we're above or equal to 768 fire this off
+		/*if (viewport.width >= 768) {
+			// On home page and window sized to 768 width or more.
+			$container = $('#author-grid');
+			$container.masonry({    
+				itemSelector: '.author-box',
+				percentPosition: true,
+				gutter: '.gutter',
+			}).imagesLoaded(function(){
+				$container.masonry('reloadItems');   
+				$container.masonry('layout');
+			});
+			$(window).resize(function () {
+				
+				//$('#author-grid').masonry('reloadItems');
+			});
+		} */
 	}
+	// If inspiration archive, init masonry
+	if (is_inspiration){
+		viewport = updateViewportDimensions();
+		// if we're above or equal to 768 fire this off
+		if (viewport.width >= 768) {
+			// On home page and window sized to 768 width or more.
+			$container = $('#main');
+			$container.masonry({    
+				itemSelector: 'article',
+				percentPosition: true,
+				gutter: '.archive-spacer'
+			}).imagesLoaded(function(){
+				$container.masonry('reloadItems');   
+				$container.masonry('layout');
+			});
+			$(window).resize(function () {
+				//$('#main').masonry('reloadItems');
+			});
 
-
-
+		}
+	}
+	// Reposition subscription-box if mobile/iPad
+	$(window).resize(function () {
+		moveSubscription();
+	});
+	/*$('.newsletter-email').focus(function(){
+		if ($('.newsletter-email').val() === "Your e-mail"){
+			$('.newsletter-email').val("");
+		}
+	});
+	$('.newsletter-email').blur(function(){
+		if ($('.newsletter-email').val().length === 0){
+			$('.newsletter-email').val("Your e-mail");
+		}
+	});*/
+	
 }); /* end of as page load scripts */

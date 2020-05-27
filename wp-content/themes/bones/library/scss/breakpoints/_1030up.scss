@@ -10,39 +10,44 @@ be seen on the Desktop.
 ******************************************************************/
 
 .wrap {
-  width: 1040px;
+  width: 1020px;
 }
 
 // HEADER
-header {
-	width: 100%;
+#header {
 	#inner-header {
-		display: flex;
-		align-items: center;
+		width: 75%;
 	}
 	#logo {
-		display: inline-block;
 	}
 	nav {
-		display: inline-block;
-		float: right;
-		margin-right: 2em;
-		margin-left: auto;
+		li a {
+		}
 	}
 }
 
-.home, .page-id-49 {
+.home, .page-id-49, .error404 {
 	
 	#left {
 		width: 75%;
 		left:0;
 		float: left;
+		#inner-header {
+			width: 100%;
+		}
+
 	}
 	#right {
 		width: 25%;
 		right:0;
 		float: right;
-		
+		clear: none;
+		.right-box {
+			width: 100%;
+			display: inline-block;
+			position: relative;
+			vertical-align: top;
+		}
 	}
 }
 .home {	
@@ -50,19 +55,31 @@ header {
 
 		#left-content {
 			width: 60%;
-			float: left;
+			#main-reflections {
+			 }
 
 			article {
 				width: 50%;
-				margin: 0;
-				padding-right: 2em;
-				margin-bottom: 3em;
+				&.tweet {
+					div {
+					}
+					.twitter-icon {
+					}
+				}
+			}
+			
+			
+			.reflection h2 a {
 			}
 		}
 		
 		#right-content {
 			width: 40%;
-			float: right;
+			article .blog-image {
+				max-height: 16em;
+				overflow: hidden;
+			}
+
 		}
 	}
 }
@@ -72,7 +89,6 @@ header {
 	.hentry {
 	}
 	#left-content {
-		width: 75%;
 		.article-header {
 			.page-title {
 				a {
@@ -84,10 +100,17 @@ header {
 		}
 	}
 	#author-grid {
-		clear: both;
-		margin-top: 2em;
-		#gutter {
+		.gutter {
 			width: 1%;
+			display: inline-block;
+			&:nth-of-type(3n+3){
+				display: inline-block;
+			}
+			&:nth-of-type(5n+5){
+				display: none;
+			}
+
+
 		}
 		.author-box {
 			width: 19.2%;
@@ -99,20 +122,12 @@ header {
 	}
 }
 
-.author, .archive, .single {
+.author, .archive, .single, .page-id-26 /*about-page*/ {
 	#content {
-		white-space: nowrap;
-		overflow: hidden;
 		 .content {
-			display: inline-block;
-			vertical-align: top;
-			white-space: normal;
-			overflow: hidden;
 		 }
 	}
 	#left-content {
-		width: 26%;
-		margin-right: 8%;
 		#to-overview {
 			a {
 			}	
@@ -127,7 +142,35 @@ header {
 		}
 	}
 	#right-content {
-		width: 66%;
+	}
+}
+
+.post-type-archive {
+	#content {
+
+		.archive-title {
+		}
+		article {
+			width: 28%;
+			.blog-image img {
+			}
+			.entry-meta {
+			}
+			.h2 {
+			}
+			.bottom-line {
+			}
+		}
+		.archive-spacer {
+			width: 8%;
+
+			&:nth-of-type(2n+2){
+				display: inline-block;
+			}
+			&:nth-of-type(3n+3){
+				display: none;
+			}
+		}
 	}
 }
 
@@ -135,45 +178,19 @@ header {
 .footer {
 	#instagram {
 		#instabox {
-			width: 14em;
-			padding-bottom: 14em;
-			background-color: rgb(0,188,140);
-			display: inline-block;
-			color: white;
-			text-align: center;
-			vertical-align: top;
-			position: relative;
-			float: left;
+			width: 20%;
+			padding-bottom: 20%;
 		}
-		#container {
-			float: left;
-			height: 100%;
-			position: relative;
-			min-width: 25%;
-			padding-bottom: 25%;
-			z-index: 99;
-			#greenbox {
-				background-color: rgb(0,188,140);
-				-webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
-				clip-path: polygon(100% 50%, 0 0, 0 100%);
-				height: 1.25em;
-				width: 0.75em;
-				margin: auto;
-				position: absolute;
-				left: auto;
-				right: auto;
-				top: 0;
-				bottom: 0;
-			}
+		#greenbox {
+			margin-left: 20%;
 		}
 		#instaphotos {
 			float: left;
-			width: 0; 
+			width: 80%; 
 			display: inline-block;
 			white-space: nowrap;
 			#sb_instagram.sbi_col_4.sbi_disable_mobile #sbi_images .sbi_item {
-				width: 14em;
-				height: 14em;
+				width: 25%;
 			}
 		}
 	}

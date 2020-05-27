@@ -18,8 +18,6 @@ Digging into WP - http://digwp.com/2010/10/customize-wordpress-dashboard/
 	- an example custom dashboard widget
 	- adding custom login css
 	- changing text in footer of admin
-
-
 */
 
 /************* DASHBOARD WIDGETS *****************/
@@ -138,7 +136,7 @@ you like.
 
 // Custom Backend Footer
 function bones_custom_admin_footer() {
-	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.', 'bonestheme' );
+	echo ('<span id="footer-thankyou">Developed by <a href="https://no.linkedin.com/in/emilbroll" target="_blank">Emil Broll</a></span>.');
 }
 
 // adding it to the admin area

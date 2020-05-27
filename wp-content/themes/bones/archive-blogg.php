@@ -15,62 +15,48 @@
 <?php get_header(); ?>
 
 			<div id="content">
+				<h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
+				
+				<main id="main" class="article" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<?php if (have_posts()) : while (have_posts()) : the_post();
 
-				<div id="inner-content" class="wrap cf">
+						?><article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+							<?php if ($thumbnail = find_img_src($post)) { ?>
+							<div class="cf blog-image"><img src="<?php echo $thumbnail; ?>" /></div>
+							<?php } ?>
+							<header class="article-header">
+								<p class="byline entry-meta vcard"><?php
+									printf('<time class="updated entry-time" datetime="' . get_the_time('d.m.Y') . '" itemprop="datePublished">' . get_the_time('d.m.Y') . '</time>'); ?></p>
 
-					<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+								<h3 class="h2"><a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" rel="bookmark" title="<?php the_author(); ?>"><?php the_title(); ?></a></h3>
+							</header>
 
-						<h1 class="archive-title h2"><?php post_type_archive_title(); ?></h1>
+							<section class="entry-content cf">
+								<?php the_excerpt(); ?>
+							</section>
+							<div class="bottom-line"></div>
+						</article><div class="archive-spacer"></div><?php
+						endwhile; ?>
 
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+								<?php bones_page_navi(); ?>
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+						<?php else : ?>
 
-								<header class="article-header">
+								<article id="post-not-found" class="hentry cf">
+									<header class="article-header">
+										<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+									</header>
+									<section class="entry-content">
+										<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+									</section>
+									<footer class="article-footer">
+											<p><?php _e( 'This is the error message in the custom posty type archive template.', 'bonestheme' ); ?></p>
+									</footer>
+								</article>
 
-									<h3 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-									<p class="byline vcard"><?php
-										printf( __( 'Posted <time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="author">%3$s</span>', 'bonestheme' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'bonestheme' ) ), get_author_posts_url( get_the_author_meta( 'ID' ) ));
-									?></p>
+						<?php endif; ?>
 
-								</header>
-
-								<section class="entry-content cf">
-
-									<?php the_excerpt(); ?>
-
-								</section>
-
-								<footer class="article-footer">
-
-								</footer>
-
-							</article>
-
-							<?php endwhile; ?>
-
-									<?php bones_page_navi(); ?>
-
-							<?php else : ?>
-
-									<article id="post-not-found" class="hentry cf">
-										<header class="article-header">
-											<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-										</header>
-										<section class="entry-content">
-											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-										</section>
-										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the custom posty type archive template.', 'bonestheme' ); ?></p>
-										</footer>
-									</article>
-
-							<?php endif; ?>
-
-						</main>
-
-					<?php get_sidebar(); ?>
-
+					</main>
 				</div>
 
 			</div>
